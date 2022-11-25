@@ -31,44 +31,61 @@ namespace RestaurantLog
         private void btn_LogIn_Click(object sender, RoutedEventArgs e)
         {
             lb_NotAuthorization.Visibility = Visibility.Hidden;
+            //lb_Authorization.Visibility = Visibility.Hidden;
             RestaurantEntities db = Helper.GetContext();
+
             string login = tb_login.Text;
             string password = tb_password.Password;
+
             Hash hash = new Hash();
+
             var authorization = db.Authorization;
             string passhash = hash.sha256_hash(password);
+
             var user = authorization.Where(x => x.Login == login && x.Password == passhash).FirstOrDefault();
             if (user != null)
             {
                 int idpost = user.EmployeeInformation.Posts.ID;
+                string name = user.EmployeeInformation.Employees.Name;
+                string patronymic = user.EmployeeInformation.Employees.Patronymic;    
+                string allame = name + " " + patronymic;
+                //lb_Authorization.Visibility = Visibility.Visible;
+                Hide();
+                HREWindow newform1 = new HREWindow(allame, idpost);
+                newform1.ShowDialog();
+                Close();
                 //MessageBox.Show(idpost.ToString());
+                /*
                 switch (idpost)
                 {
                     case 2:
                         Hide();
-                        HREWindow newform1 = new HREWindow();
+                        HREWindow newform1 = new HREWindow(allame, idpost);
                         newform1.ShowDialog();
                         Close();
                         break;
                     case 3:
                         Hide();
-                        ManagerWindow newform2 = new ManagerWindow();
+                        HREWindow newform2 = new HREWindow(allame);
+                        //ManagerWindow newform2 = new ManagerWindow();
                         newform2.ShowDialog();
                         Close();
                         break;
                     case 4:
                         Hide();
-                        SousСhefWindow newform3 = new SousСhefWindow();
+                        HREWindow newform3 = new HREWindow(allame);
+                        //SousСhefWindow newform3 = new SousСhefWindow();
                         newform3.ShowDialog();
                         Close();
                         break;
                     case 5:
                         Hide();
-                        WaiterWindow newform4 = new WaiterWindow();
+                        HREWindow newform4 = new HREWindow(allame);
+                        //WaiterWindow newform4 = new WaiterWindow();
                         newform4.ShowDialog();
                         Close();
                         break;
-                }
+                }*/
             }
             else
             {

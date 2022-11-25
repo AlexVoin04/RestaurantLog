@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantLog"
         mc:Ignorable="d"
-        Title="HREWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="HREWindow" Height="854" Width="1562">
+    <Grid Margin="0,0,0,-6">
+        <TextBlock x:Name="tbl_fio" HorizontalAlignment="Left" Margin="32,10,0,0" TextWrapping="Wrap" Text="Пользователь" VerticalAlignment="Top" FontSize="18"/>
+        <TabControl Margin="15,50,15,140">
+            <TabItem x:Name="ti_employees" Header="Сотрудники">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="ti_orders" Header="Заказы">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="ti_ordersinfo" Header="Просмотр заказов">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="ti_purchases" Header="Закупки">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="ti_products" Header="Продукты">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="ti_dishes" Header="Блюда">
+                <Grid Background="#FFE5E5E5" Height="616" VerticalAlignment="Top"/>
+            </TabItem>
+            <TabItem x:Name="ti_ordersstatus" Header="Статусы заказов">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="bt_end" Content="Выйти" Height="34" Margin="1410,22,16,0" VerticalAlignment="Top" Click="bt_end_Click"/>
     </Grid>
 </Window>

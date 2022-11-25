@@ -19,10 +19,40 @@ namespace RestaurantLog
     /// </summary>
     public partial class HREWindow : Window
     {
-        public HREWindow()
+        public HREWindow(string allname, int idpost)
         {
             InitializeComponent();
+            tbl_fio.Text = "Здравствуйте, " + allname;
 
+            switch (idpost)
+            {
+                case 2:
+                    //tb_login.Visibility = Visibility.Collapsed;//не создает
+                    CreateMenu(ti_dishes);CreateMenu(ti_orders);CreateMenu(ti_ordersinfo);CreateMenu(ti_ordersstatus);CreateMenu(ti_products);CreateMenu(ti_purchases);
+                    break;
+                case 3:
+                    CreateMenu(ti_employees); CreateMenu(ti_orders); CreateMenu(ti_ordersinfo); CreateMenu(ti_ordersstatus);
+                    break;
+                case 4:
+                    CreateMenu(ti_dishes); CreateMenu(ti_orders); CreateMenu(ti_employees); CreateMenu(ti_products); CreateMenu(ti_purchases);
+                    break;
+                case 5:
+                    CreateMenu(ti_dishes);  CreateMenu(ti_employees); CreateMenu(ti_products); CreateMenu(ti_purchases); CreateMenu(ti_ordersstatus);
+                    break;
+            }
+
+        }
+        public void CreateMenu(TabItem tabItem)
+        {
+            tabItem.Visibility = Visibility.Collapsed;
+        }
+
+        private void bt_end_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            MainWindow newform = new MainWindow();
+            newform.ShowDialog();
+            Close();
         }
     }
 }
